@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+/* Common */
+html {-webkit-text-size-adjust:none; }
+body {position:relative; border:0; padding:0; margin:0; overflow-x:hidden; font-size:14px; color:#000; word-break:keep-all; font-family: "NotoSansKR"; font-weight: 400;}
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select {margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6 { font-style:normal; font-weight:normal;}
+body,input,textarea,select,button,table {  font-style:normal;}
+header,footer,section,article,aside,nav,hgroup,details,menu,figure,figcaption {display:block;}
+img,fieldset {display: block; border:0; border:none; }
+label, strong, span, em{ font-weight:normal; }
+ul,ol {list-style:none;}
+em,address {font-style:normal;}
+legend {visibility:hidden;top:0;left:0;width:0;height:0px;font-size:0;line-height:0}
+hr {display:none}
+a,a:hover,a:active,a:focus {text-decoration:none;}
+a, button {outline:none; color:#000; selector-dummy:expression(this.hideFocus=true);}
+strong {-webkit-text-stroke-width:0;}
+input[type="search"] {
+-webkit-appearance:none;
+}
+button { font-family: inherit;  font-size: inherit;  background: none;  border:none; }
+input:focus, select:focus, button:focus, textarea:focus { outline: none;}
+/* jost */
+@font-face {
+	font-family: "Jost";
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+	src: url(../font/Jost-Regular.woff2) format("woff2"),
+		url(../font/Jost-Regular.woff) format("woff"),
+		url(../font/Jost-Regular.ttf) format("opentype");
+}
+
+@font-face {
+	font-family: "Jost";
+	font-display: auto;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../font/Jost-Medium.woff2) format("woff2"),
+		url(../font/Jost-Medium.woff) format("woff"),
+		url(../font/Jost-Medium.ttf) format("opentype");
+}
+
+@font-face {
+	font-family: "Jost";
+	font-display: auto;
+	font-style: bold;
+	font-weight: 600;
+	src: url(../font/Jost-SemiBold.woff2) format("woff2"),
+		url(../font/Jost-SemiBold.woff) format("woff"),
+		url(../font/Jost-SemiBold.ttf) format("opentype");
+}
+
+@font-face {
+	font-family: "Jost";
+	font-display: auto;
+	font-style: bold;
+	font-weight: 700;
+	src: url(../font/Jost-Bold.woff2) format("woff2"),
+		url(../font/Jost-Bold.woff) format("woff"),
+		url(../font/Jost-Bold.ttf) format("opentype");
+}
+
+/* NotoSansKR */
+@font-face {
+	font-family: "NotoSansKR";
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+	src: url(../font/NotoSansKR-Regular.woff2) format("woff2"),
+		url(../font/NotoSansKR-Regular.woff) format("woff"),
+		url(../font/NotoSansKR-Regular.ttf) format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-display: auto;
+	font-style: medium;
+	font-weight: 500;
+	src: url(../font/NotoSansKR-Medium.woff2) format("woff2"),
+		url(../font/NotoSansKR-Medium.woff) format("woff"),
+		url(../font/NotoSansKR-Medium.ttf) format("opentype");
+}
+
+
+@font-face {
+	font-family: "NotoSansKR";
+	font-display: auto;
+	font-style: bold;
+	font-weight: 600;
+	src: url(../font/NotoSansKR-Bold.woff2) format("woff2"),
+		url(../font/NotoSansKR-Bold.woff) format("woff"),
+		url(../font/NotoSansKR-Bold.ttf) format("opentype");
+}
+
+/* NewYork */
+@font-face {
+	font-family: "NewYork";
+	font-display: auto;
+	font-style: medium;
+	font-weight: 500;
+	src: url(../font/NewYork.woff2) format("woff2"),
+		url(../font/NewYork.woff) format("woff"),
+		url(../font/NewYork.otf) format("opentype");
+}
+
+/* NotoSerifKR */
+@font-face {
+	font-family: "NotoSerifKR";
+	font-display: auto;
+	font-style: medium;
+	font-weight: 500;
+	src: url(../font/NotoSerifKR-Medium.woff2) format("woff2"),
+		url(../font/NotoSerifKR-Medium.woff) format("woff"),
+		url(../font/NotoSerifKR-Medium.ttf) format("opentype");
+}
+@font-face {
+	font-family: "NotoSerifKR";
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+	src: url(../font/NotoSerifKR-Regular.woff) format("woff"),
+		url(../font/NotoSerifKR-Regular.ttf) format("opentype");
+}
+
+/* Aggravo */
+@font-face {
+    font-family: 'Aggravo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}

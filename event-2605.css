@@ -1,0 +1,126 @@
+/* ============================================================
+   EVENT 2605 - 평화의 꽃을 피워주세요
+   모든 셀렉터 .event-2605 prefix / 한 묶음 한 줄
+
+   ※ background-image 경로는 CSS 파일이 HTML과 같은 depth에
+     있을 경우 images/event/2605/ 그대로 사용.
+     외부 CSS(assets/css/)에서 사용 시 ../../images/event/2605/ 로 수정.
+   ============================================================ */
+
+/* ----- 기본 리셋 ----- */
+.event-2605 .e2605-wrap * { box-sizing: border-box; }
+.event-2605 .e2605-wrap { position: relative; background: #f4eedc; overflow: hidden; font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+
+/* ----- 별(✳) 장식 ----- */
+.event-2605 .e2605-star { position: absolute; color: #2d6b45; font-style: normal; line-height: 1; z-index: 2; user-select: none; pointer-events: none; }
+.event-2605 .e2605-star--tl { top: 44px; left: 44px; font-size: 30px; }
+.event-2605 .e2605-star--bl { bottom: 110px; left: calc(46% - 10px); font-size: 40px; }
+
+/* ----- 노란 원 장식 ----- */
+.event-2605 .e2605-dot { position: absolute; width: 20px; height: 20px; background: #e6b830; border-radius: 50%; top: 262px; left: 45.5%; z-index: 2; pointer-events: none; }
+
+/* ----- 이미지 장식 공통 ----- */
+.event-2605 .e2605-deco { position: absolute; pointer-events: none; z-index: 2; }
+.event-2605 .e2605-deco--leaf3 { width: 82px; top: 178px; left: -16px; }
+.event-2605 .e2605-deco--leaf4 { width: 96px; top: 8px; right: 10px; }
+.event-2605 .e2605-deco--fr1 { width: 54px; top: 192px; right: 22px; }
+.event-2605 .e2605-deco--fr2 { width: 54px; top: 264px; right: 82px; }
+.event-2605 .e2605-deco--leaf2 { width: 92px; bottom: 52px; right: 8px; }
+.event-2605 .e2605-deco--leaf5 { width: 50px; bottom: 58px; right: 108px; }
+
+/* ----- CSS Grid 레이아웃 ----- */
+.event-2605 .e2605-grid { display: grid; grid-template-columns: 46% 1fr; grid-template-rows: auto 1fr; grid-template-areas: "title content" "img content"; column-gap: 32px; row-gap: 22px; max-width: 1380px; margin: 0 auto; padding: 52px 60px 32px; position: relative; z-index: 1; }
+.event-2605 .e2605-col-title { grid-area: title; }
+.event-2605 .e2605-col-content { grid-area: content; padding-top: 6px; }
+.event-2605 .e2605-col-img { grid-area: img; border-radius: 16px; overflow: hidden; align-self: end; }
+.event-2605 .e2605-col-img img { width: 100%; display: block; }
+
+/* ----- EVENT 라벨 ----- */
+.event-2605 .e2605-event-label { font-size: 13px; font-weight: 800; letter-spacing: 2.5px; color: #2d6b45; margin: 0 0 14px; padding: 0; }
+
+/* ----- 타이틀 꽃 블록 ----- */
+/* ※ 외부 CSS 사용 시 경로: ../../images/event/2605/leaf-01.png */
+.event-2605 .e2605-title-block { background: url('images/event/2605/leaf-01.png') center / contain no-repeat; width: 268px; height: 238px; display: flex; align-items: center; justify-content: flex-start; padding-left: 32px; }
+.event-2605 .e2605-title { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.35; text-align: left; margin: 0; padding: 0; word-break: keep-all; }
+
+/* ----- 설명 텍스트 ----- */
+.event-2605 .e2605-desc { margin-bottom: 24px; }
+.event-2605 .e2605-desc-main { font-size: 15px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+.event-2605 .e2605-desc-sub { font-size: 14px; line-height: 1.9; color: #555; margin: 0; }
+
+/* ----- 경품 (모바일 전용 - PC에서 숨김) ----- */
+.event-2605 .e2605-prize-mo { display: none; }
+
+/* ----- 이벤트 안내 리스트 ----- */
+.event-2605 .e2605-info-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+.event-2605 .e2605-info-item { display: flex; align-items: flex-start; gap: 18px; }
+.event-2605 .e2605-info-badge { display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #444; border-radius: 50px; padding: 4px 16px; font-size: 12.5px; font-weight: 600; white-space: nowrap; color: #333; min-width: 84px; flex-shrink: 0; line-height: 1.6; }
+.event-2605 .e2605-info-body { padding-top: 3px; }
+.event-2605 .e2605-info-body p { font-size: 14px; color: #333; line-height: 1.75; margin: 0 0 2px; }
+.event-2605 .e2605-info-body p:last-child { margin-bottom: 0; }
+/* 참여방법 2열 그리드 (column 방향으로 채워 ❶❸/❷❹ 순서 구현) */
+.event-2605 .e2605-info-body--method { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; grid-auto-flow: column; column-gap: 16px; }
+
+/* ----- CTA 영역 ----- */
+.event-2605 .e2605-cta-wrap { display: flex; align-items: center; gap: 32px; }
+.event-2605 .e2605-btn-subscribe { display: inline-block; background: #4d9168; color: #fff; font-size: 17px; font-weight: 700; padding: 13px 52px; border-radius: 50px; text-decoration: none; letter-spacing: 1px; transition: background 0.2s ease; }
+.event-2605 .e2605-btn-subscribe:hover { background: #2d6b45; }
+.event-2605 .e2605-btn-subscribe:active { background: #235535; }
+
+/* ----- 경품 (PC 전용) ----- */
+.event-2605 .e2605-prize-pc { display: flex; align-items: center; gap: 12px; }
+.event-2605 .e2605-prize-circle { width: 90px; height: 90px; background: #e6b830; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+.event-2605 .e2605-prize-circle img { width: 68px; height: 68px; object-fit: contain; }
+.event-2605 .e2605-prize-pc p { font-size: 13px; color: #333; line-height: 1.7; margin: 0; font-weight: 600; }
+
+/* ----- 유의사항 ----- */
+.event-2605 .e2605-notes { max-width: 1380px; margin: 0 auto; padding: 14px 60px 52px; position: relative; z-index: 1; }
+.event-2605 .e2605-notes ul { list-style: none; padding: 0; margin: 0; }
+.event-2605 .e2605-notes li { font-size: 12px; color: #777; line-height: 1.8; padding-left: 14px; position: relative; margin-bottom: 1px; }
+.event-2605 .e2605-notes li::before { content: '•'; position: absolute; left: 0; color: #777; }
+
+/* ============================================================
+   반응형 - 태블릿 (768px ~ 1024px)
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .event-2605 .e2605-grid { grid-template-columns: 44% 1fr; padding: 42px 36px 26px; column-gap: 24px; }
+  .event-2605 .e2605-title-block { width: 234px; height: 208px; padding-left: 26px; }
+  .event-2605 .e2605-title { font-size: 30px; }
+  .event-2605 .e2605-info-body--method { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .event-2605 .e2605-notes { padding: 14px 36px 44px; }
+  .event-2605 .e2605-deco--fr1 { right: 10px; }
+  .event-2605 .e2605-deco--fr2 { right: 66px; }
+  .event-2605 .e2605-deco--leaf2 { width: 72px; }
+  .event-2605 .e2605-deco--leaf5 { width: 42px; right: 82px; }
+}
+
+/* ============================================================
+   반응형 - 모바일 (~ 767px)
+   ============================================================ */
+@media (max-width: 767px) {
+  .event-2605 .e2605-grid { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: "title" "content" "img"; padding: 36px 24px 20px; column-gap: 0; row-gap: 18px; }
+  .event-2605 .e2605-col-title { text-align: center; }
+  .event-2605 .e2605-event-label { text-align: center; }
+  .event-2605 .e2605-title-block { width: 220px; height: 196px; margin: 0 auto; padding-left: 22px; }
+  .event-2605 .e2605-title { font-size: 28px; }
+  .event-2605 .e2605-desc-main { font-size: 14px; text-align: center; }
+  .event-2605 .e2605-desc-sub { font-size: 13px; text-align: center; }
+  .event-2605 .e2605-prize-mo { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 22px; }
+  .event-2605 .e2605-prize-mo .e2605-prize-circle { width: 80px; height: 80px; }
+  .event-2605 .e2605-prize-mo .e2605-prize-circle img { width: 62px; height: 62px; }
+  .event-2605 .e2605-prize-mo p { font-size: 13px; color: #333; line-height: 1.7; margin: 0; font-weight: 600; }
+  .event-2605 .e2605-info-item { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .event-2605 .e2605-info-body--method { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .event-2605 .e2605-cta-wrap { flex-direction: column; align-items: center; gap: 0; }
+  .event-2605 .e2605-btn-subscribe { font-size: 16px; padding: 12px 48px; }
+  .event-2605 .e2605-prize-pc { display: none !important; }
+  .event-2605 .e2605-notes { padding: 16px 24px 44px; }
+  .event-2605 .e2605-star--bl { display: none; }
+  .event-2605 .e2605-dot { display: none; }
+  .event-2605 .e2605-deco--leaf3 { display: none; }
+  .event-2605 .e2605-deco--leaf4 { width: 68px; top: 6px; right: 6px; }
+  .event-2605 .e2605-deco--fr1 { display: none; }
+  .event-2605 .e2605-deco--fr2 { display: none; }
+  .event-2605 .e2605-deco--leaf2 { width: 68px; bottom: 14px; right: 4px; }
+  .event-2605 .e2605-deco--leaf5 { display: none; }
+}

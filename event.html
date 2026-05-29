@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>전쟁기념관</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+<script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="assets/js/publish.js"></script>
+<script type="text/javascript" src="assets/js/swiper.js"></script>
+<script type="text/javascript" src="assets/js/gnb.js"></script>
+
+<style>
+@font-face { font-family: 'WavvePADO'; src: url('assets/font/WavvePADO-Regular.otf') format('opentype'); }
+.Wavve { font-family: 'WavvePADO', sans-serif; }
+.event-2605 .mob-br { display: none; }
+
+.sup_page_swp .swiper-wrapper .swiper-slide { padding: 0;  }
+.sup_page_swp { overflow: visible; }
+.event-2605 .contariner { background: #f4eedc; } 
+/* ----- 기본 리셋 ----- */
+.event-2605 .e2605-wrap * { box-sizing: border-box; }
+.event-2605 .e2605-wrap { position: relative; }
+ 
+/* ----- 별(✳) 장식 ----- */
+.event-2605 .e2605-star { position: absolute; color: #2d6b45; font-style: normal; line-height: 1; z-index: 2; user-select: none; pointer-events: none; }
+/* .event-2605 .e2605-star--tl { top: 44px; left: 44px; font-size: 30px; } */
+.event-2605 .e2605-star--bl { bottom: 110px; left: calc(46% - 10px); font-size: 40px; }
+ 
+/* ----- 노란 원 장식 ----- */
+.event-2605 .e2605-dot { position: absolute; width: 20px; height: 20px; background: #e6b830; border-radius: 50%; top: 262px; left: 45.5%; z-index: 2; pointer-events: none; }
+ 
+/* ----- 이미지 장식 공통 ----- */
+.event-2605 .e2605-deco { position: absolute; pointer-events: none; z-index: 1; }
+.event-2605 .e2605-deco--leaf3 { width: 50px; bottom: 160px; left: -7px; }
+.event-2605 .e2605-deco--leaf4 { width: 250px; bottom: -20px; left: 200px; }
+.event-2605 .e2605-deco--leaf2 { width: 300px; top: -20px; right: -35px; }
+.event-2605 .e2605-deco--leaf5 { width: 280px; bottom: -67px; right: 100px; }
+ 
+/* ----- CSS Grid 레이아웃 ----- */
+.event-2605 .e2605-grid { display: grid; grid-template-columns: 46% 1fr; grid-template-rows: auto 1fr; grid-template-areas: "title content" "img content"; column-gap: 32px; row-gap: 22px; margin: 0 auto; padding: 30px 50px 50px; position: relative; z-index: 1; }
+.event-2605 .e2605-col-title { grid-area: title; }
+.event-2605 .e2605-col-content { grid-area: content; }
+.event-2605 .e2605-col-img { padding-top: 180px; grid-area: img; border-radius: 16px; overflow: hidden;  }
+ 
+/* ----- Scene 컨테이너 (bg + 꽃 오버레이) ----- */
+.event-2605 .e2605-scene { position: relative; width: 100%; display: block; overflow: hidden; }
+.event-2605 .e2605-scene__bg { width: 86%; display: block; border-radius: 14px; }
+ 
+/* ----- 꽃 버튼 공통 ----- */
+.event-2605 .e2605-flower { position: absolute; background: none; border: none; padding: 0; margin: 0; cursor: pointer; transform-origin: bottom center; transition: transform 0.2s ease; }
+.event-2605 .e2605-flower:hover { transform: scale(1.08) translateY(-4%); }
+.event-2605 .e2605-flower:focus-visible { outline: 2px dashed #4d9168; outline-offset: 4px; border-radius: 4px; }
+.event-2605 .e2605-flower img { display: block; width: 100%; height: auto; }
+ 
+/*
+  꽃 위치 기준: bg-01.png 이미지 정원 내 실제 꽃 위치
+  left / bottom 은 .e2605-scene(컨테이너) 기준 %
+  width는 이미지 전체 너비 대비 비율
+ 
+  bg-01.png 내 꽃 배치 (좌 → 우):
+  ① flower-01 : 연크림 꽃봉오리   ~ left 5%,  bottom 10%
+  ② flower-02 : 분홍 장미형       ~ left 16%, bottom 15%
+  ③ flower-03 : 흰색 꽃봉오리     ~ left 28%, bottom 12%
+  ④ flower-04 : 진분홍 대형꽃     ~ left 39%, bottom 16%  (가장 큰 꽃 → width 크게)
+  ⑤ flower-05 : 분홍 소형         ~ left 53%, bottom 11%
+  ⑥ flower-06 : 연노랑 꽃봉오리   ~ left 64%, bottom 13%
+*/
+.event-2605 .e2605-flower--01 { left: 4%;  bottom: -5%; width: 12%; }
+.event-2605 .e2605-flower--02 { left: 17%; bottom: 4%; width: 11%; }
+.event-2605 .e2605-flower--03 { left: 30%; bottom: -2%; width: 9%; }
+.event-2605 .e2605-flower--04 { left: 50%; bottom: 0%; width: 10%; }
+.event-2605 .e2605-flower--05 { left: 60%; bottom: 0%; width: 10%; }
+.event-2605 .e2605-flower--06 { left: 72%; bottom: 0%; width: 10%; }
+
+.event-2605 .e2605-flower img { transition: opacity 0.3s ease; }
+.event-2605 .e2605-flower.is-bloomed img { pointer-events: none; }
+ 
+/* ----- EVENT 라벨 ----- */
+.event-2605 .e2605-event-label { font-size: 13px; font-weight: 600; color: #000; margin: 0 0 14px; padding: 0; }
+ 
+/* ----- 타이틀 꽃 블록 ----- */
+/* ※ assets/css/ 에서 사용 시: url('../../images/event/2605/leaf-01.png') */
+.event-2605 .e2605-title-block { position: absolute; top: -80px; left: 65px; background: url('images/event/2605/leaf-01.png') center / contain no-repeat; width: 400px; height: 350px; display: flex; align-items: center; justify-content: flex-start; padding: 39px 0 0 150px; }
+.event-2605 .e2605-title { font-size: 30px; font-weight: 500; color: #fff; line-height: 1.35; text-align: left; margin: 0; padding: 0; word-break: keep-all; }
+ 
+/* ----- 설명 텍스트 ----- */
+.event-2605 .e2605-desc { margin-bottom: 24px; transform: scaleX(0.97); transform-origin: left center; }
+.event-2605 .e2605-desc-main { font-size: 16px; line-height: 1.7; color: #56C491; font-weight: 600; margin: 0 0 14px; }
+.event-2605 .e2605-desc-sub { font-size: 16px; line-height: 1.7; color: #56C491; font-weight: 600; margin: 0; }
+ 
+/* ----- 경품 (모바일 전용) ----- */
+.event-2605 .e2605-prize-mo { display: none; }
+ 
+/* ----- 이벤트 안내 ----- */
+.event-2605 .e2605-info-list { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 28px; }
+.event-2605 .e2605-info-item { display: flex; align-items: flex-start; gap: 18px; }
+.event-2605 .e2605-info-badge { background: #fff; display: inline-flex; align-items: center; font-weight: 600; justify-content: center; border: 1.5px solid #444; border-radius: 50px; padding: 4px 16px 1px; font-size: 14px; font-weight: 600; white-space: nowrap; color: #333; min-width: 84px; flex-shrink: 0; line-height: 1.6; }
+.event-2605 .e2605-info-body { padding-top: 3px; }
+.event-2605 .e2605-info-body p { font-size: 16px; color: #222; line-height: 1.5; margin: 0 0 2px; transform: scaleX(0.97); transform-origin: left center; }
+.event-2605 .e2605-info-body p:last-child { margin-bottom: 0; }
+/* 참여방법 2열 그리드: ❶❸ / ❷❹ */
+.event-2605 .e2605-info-body--method { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; grid-auto-flow: column; column-gap: 16px; }
+ 
+/* ----- CTA 영역 ----- */
+.event-2605 .e2605-cta-wrap { display: flex; align-items: center; gap: 150px; }
+.event-2605 .e2605-btn-subscribe { display: inline-flex; align-items: center; justify-content: center; background-image: url('images/event/2605/flower-button.png'); background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; color: #fff; font-size: 18px; font-weight: 700; width: 170px; height: 80px; border-radius: 0; text-decoration: none; letter-spacing: 1px; transition: transform 0.2s ease, filter 0.2s ease; padding: 0; }
+.event-2605 .e2605-btn-subscribe:hover { background: url('images/event/2605/flower-button.png') no-repeat; background-size: 100% 100%; transform: scale(1.05); filter: brightness(0.95); }
+.event-2605 .e2605-btn-subscribe:active { transform: scale(0.97); filter: brightness(0.88); }
+ 
+/* ----- 경품 (PC 전용) ----- */
+/* 꽃 모양을 background-image로 쓰는 경우 */
+.event-2605 .e2605-prize-circle { position: relative; width: 160px; height: 160px; background: url('images/event/2605/flower-bg.png') no-repeat center center; background-size: contain; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex-shrink: 0; }
+.event-2605 .e2605-prize-circle img { width: 200px; height: 200px; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); }
+.event-2605 .e2605-prize-circle p { position: absolute; bottom: 31px; left: -8%; transform: translateX(-50%); white-space: nowrap; font-size: 13px; font-weight: 700; color: #333; line-height: 1.7; text-align: right; z-index: 10; }
+
+/* ----- 유의사항 ----- */
+.event-2605 .e2605-notes { max-width: 1380px; margin: 0 auto; padding: 50px 0px 0px; position: relative; z-index: 1; }
+.event-2605 .e2605-notes ul { list-style: none; padding: 0; margin: 0; }
+.event-2605 .e2605-notes li { font-size: 12px; transform: scaleX(0.97); transform-origin: left center; color: #222; line-height: 1.8; padding-left: 14px; position: relative; margin-bottom: 1px; }
+.event-2605 .e2605-notes li::before { content: '•'; position: absolute; left: 0; color: #222; }
+ 
+#pageNav.event2605nav { background: #f4eedc; }
+
+/* ============================================================
+   반응형 - 태블릿 (768px ~ 1024px)
+   ============================================================ */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  .event-2605 .e2605-grid { grid-template-columns: 44% 1fr; padding: 42px 36px 26px; column-gap: 24px; }
+  .event-2605 .e2605-title-block { width: 234px; height: 208px; padding-left: 26px; }
+  .event-2605 .e2605-title { font-size: 30px; }
+  .event-2605 .e2605-info-body--method { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .event-2605 .e2605-notes { padding: 14px 36px 44px; }
+  .event-2605 .e2605-deco--leaf2 { width: 72px; }
+  .event-2605 .e2605-deco--leaf5 { width: 42px; right: 82px; }
+  .event-2605 .e2605-flower--04 { width: 12%; }
+} */
+
+.event-2605 .e2605-notes.mob { display: none; padding: 50px 20px; }
+/* ============================================================
+   반응형 - 모바일 (~ 767px)
+   ============================================================ */
+@media (max-width: 1020px) {
+  .event-2605 .mob-br { display: block; }
+  .event-2605 .e2605-notes.mob { order: 4; }
+  .event-2605 .e2605-notes.pc { display: none; }
+  .event-2605 .e2605-notes.mob { display: block; }
+  .event-2605 .e2605-grid { display: flex; flex-direction: column; padding: 36px 24px 20px; gap: 18px; }
+  .event-2605 .e2605-col-title { order: 1; text-align: center; }
+  .event-2605 .e2605-col-content { order: 2; }
+  .event-2605 .e2605-col-img { order: 3; padding-top: 0; }
+  .event-2605 .e2605-event-label { text-align: center; }
+  .event-2605 .e2605-title-block { display: flex; justify-content: center; align-items: center;  margin: 0 auto; padding-left: 22px; position: relative; top: auto; left: auto; width: 100%;max-width: 400px;}
+  .event-2605 .e2605-col-title { position: relative; min-height: 160px; }
+  .event-2605 .e2605-title { font-size: 28px; }
+  .event-2605 .e2605-prize-circle p { top: 80px; left: -15%; }
+  .event-2605 .e2605-desc-main { font-size: 15px; text-align: center; }
+  .event-2605 .e2605-desc-sub { font-size: 15px; text-align: center; }
+  .event-2605 .e2605-prize-mo { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 22px; margin-bottom: 30px; margin-top: 50px; }
+  .event-2605 .e2605-prize-mo .e2605-prize-circle { width: 300px; height: 300px; }
+  .event-2605 .e2605-prize-mo .e2605-prize-circle img { width: 100%; height: auto; max-width: 370px; max-height: 370px;  }
+  .event-2605 .e2605-prize-mo p { font-size: 13px; color: #333; line-height: 1.7; margin: 0; font-weight: 600; }
+  .event-2605 .e2605-info-item { flex-direction: column; gap: 8px; align-items: center; }
+  .event-2605 .e2605-info-body--method { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .event-2605 .e2605-cta-wrap { flex-direction: column; align-items: center; gap: 16px; }
+  .event-2605 .e2605-btn-subscribe { width: 160px; height: 70px; font-size: 18px; }
+  .event-2605 .e2605-prize-pc { display: none !important; }
+  .event-2605 .e2605-notes { padding:0; width: 100%; }
+  .event-2605 .e2605-info-body .center { text-align: center; }
+  .event-2605 .e2605-star--bl { display: none; }
+  .event-2605 .e2605-dot { display: none; }
+  .event-2605 .e2605-deco--leaf3 { width: 55px; bottom: 14px; right: 4px; top: auto; left: auto; }
+  .event-2605 .e2605-deco--leaf4 { width: 145px; top: 500px; right: -105px; bottom: auto; left: auto; }
+  .event-2605 .e2605-deco--leaf2 { width: 180px; top: 1000px; left: -50px; right: auto; }
+  .event-2605 .e2605-deco--leaf5 {  width: 180px; bottom: 735px; right: -40px; }
+  .event-2605 .e2605-flower--01 { left: 5%;  bottom: 0%;  width: 10%; }
+  .event-2605 .e2605-flower--02 { left: 17%; bottom: 0%; width: 12%; }
+  .event-2605 .e2605-flower--03 { left: 33%; bottom: 0%; width: 9%; }
+  .event-2605 .e2605-flower--04 { left: 60%; bottom: 0%; width: 10%; }
+  .event-2605 .e2605-flower--05 { left: 73%; bottom: 0%;  width: 11%; }
+  .event-2605 .e2605-flower--06 { left: 87%; bottom: 0%; width: 11%; }
+}
+@media (max-width: 480px) {
+  .event-2605 .e2605-prize-circle p { top: 50px; left: -22%; }
+  .event-2605 .e2605-prize-mo .e2605-prize-circle { width: 210px; height: 210px; }
+  /* .event-2605 .modal-content { width: 90%; } */
+
+}
+@media (max-width: 360px) {
+  .event-2605 .e2605-prize-circle p { left: 7% !important; }
+}
+
+.event-2605.event-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 2500; overflow: auto; }
+.event-2605 .modal-content { background-color: #FFFAE8; padding: 20px; border-radius: 8px; max-width: 70%; height: auto; position: relative; max-height: 90vh; overflow-y: auto; box-sizing: border-box; }
+.event-2605.event-modal .close-button { position: absolute; top: 10px; right: 10px; padding: 5px; font-size: 1.5em; font-weight: bold; line-height: 1; cursor: pointer; border: none; background: none; color: black; opacity: 0.7; }
+.event-2605.event-modal .close-button:hover { opacity: 1; }
+.event-2605.event-modal .event-result { position: relative; text-align: center; padding: 40px 50px 30px; background-image: url('../assets/images/event/0605/firecracker.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; }
+.event-2605.event-modal .event-result .result-message { position: relative; z-index: 10; font-weight: 600; font-size: 40px; line-height: 100%; margin-bottom: 10px; color: #E45A10; }
+.event-2605.event-modal .event-result .sub-message { position: relative; font-weight: 600; font-size: 24px; line-height: 100%; margin-top: -50px; margin-bottom: 20px; }
+.event-2605.event-modal .event-result .gift-img { width: 90%; height: auto; max-width: 200px; margin: 0 auto 20px; }
+.event-2605.event-modal .event-result .gift-card { padding: 10px 90px; font-weight: 400; font-size: 15px; line-height: 100%; }
+.event-2605.event-modal .event-result .instruction { margin-top: 10px; font-weight: 600; font-size: 18px; }
+.event-2605.event-modal .event-result .notice { margin-top: 10px; font-size: 15px; font-weight: 400; }
+.event-2605.event-modal .event-result .submit-button { background-color: #E45A10; color: white; padding: 10px 30px; border: none; border-radius: 999px; margin-top: 20px; font-size: 25px; width: 200px; font-weight: 600; }
+.event-2605.event-modal .event-result .submit-button:hover { background-color: #E45A10; }
+.event-2605.event-modal .event-result .lucky-img { position: relative; margin-bottom:10px; max-width: 300px; margin: 0 auto; margin-top: -50px; }
+.event-2605.info-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 2600; overflow: auto; }
+.event-2605.info-modal .modal-content { background-color: #FFFAE8; padding: 20px; border-radius: 8px; max-width: 90%; width: 500px; max-height: 90vh; overflow-y: auto; box-sizing: border-box; position: relative; }
+.event-2605.info-modal .close-button { position: absolute; top: 10px; right: 10px; padding: 5px; font-size: 1.5em; font-weight: bold; line-height: 1; cursor: pointer; border: none; background: none; color: black; opacity: 0.7; }
+.event-2605.info-modal .form-title { text-align: center; margin-bottom: 20px; }
+.event-2605.info-modal .info-form { padding: 20px; margin: 0 auto; text-align: center; }
+.event-2605.info-modal .info-form .form-title { font-size: 24px; color: #E45A10; text-align: center; margin-bottom: 10px; font-weight: 400; }
+.event-2605.info-modal .info-form .form-description { font-weight: 400; text-align: center; margin-bottom: 15px; font-size: 15px; }
+.event-2605.info-modal .form-group { display: flex; margin-bottom: 15px; align-items: center; }
+.event-2605.info-modal .form-group .phone, .form-group .email, .form-group .name { width: 90px; margin-right: 15px; text-align: left; flex-shrink: 0; font-size: 15px; font-weight: 500; }
+.event-2605.info-modal .form-group .name-input, .form-group .email-input { flex-grow: 1; height: 35px; border: 2px solid #ccc; border-radius: 5px; padding: 5px; font-size: 15px; font-weight: 500; min-width: 0; box-sizing: border-box; }
+.event-2605.info-modal .form-group .phone-inputs { flex-grow: 1; display: flex; align-items: center; }
+.event-2605.info-modal .phone-group .phone-select, .phone-group .phone-input { font-size: 14px; height: 35px; border: 2px solid #ccc; border-radius: 5px; padding: 5px; }
+.event-2605.info-modal .form-group .name-input:focus, .form-group .email-input:focus, .form-group .phone-select:focus, .form-group .phone-input:focus { outline: none; border-color: #E45A10; box-shadow: 0 0 5px rgba(0, 134, 221, 0.5); }
+.event-2605.info-modal .phone-group .phone-select { width: 100px; height: 35px; font-size: 15px; padding: 0px 10px; background-repeat: no-repeat; background-image: url('../assets/images/event/0605/event-page/select-arrow.svg'); background-position: right 2px center; }
+.event-2605.info-modal .phone-group .phone-option { font-size: 16px; padding: 10px; }
+.event-2605.info-modal .phone-group .phone-input { width: 40%; box-sizing: border-box; }
+.event-2605.info-modal .phone-group .hyphen { display: inline-block; width: auto; text-align: center; font-size: 16px; margin: 0 5px; height: 35px; line-height: 35px; flex-shrink: 0; }
+.event-2605.info-modal .info-form .agreement-title { margin-top: 20px; font-size: 15px; font-weight: 500; text-align: left; }
+.event-2605.info-modal .info-form .agreement-group { margin-top: 10px; padding: 15px; border-radius: 4px; background-color: #F2F2F2; max-height: 150px; overflow-x: auto; text-align: left; }
+.event-2605.info-modal .info-form .agreement-group .agreement-subtitle { font-size: 14px; font-weight: 500; color: #333; margin-bottom: 5px; }
+.event-2605.info-modal .info-form .agreement-group .agreement-text { font-size: 14px; color: #666; margin-bottom: 8px; }
+.event-2605.info-modal .checkbox-row { display: flex; align-items: center; justify-items: center; gap: 8px; margin-top: 15px; cursor: pointer; user-select: none; }
+.event-2605.info-modal .styled-checkbox { position: absolute; opacity: 0; }
+.event-2605.info-modal .checkbox-label { position: relative; cursor: pointer; padding: 0; display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; }
+.event-2605.info-modal .checkbox-label:before { content: ''; margin-right: 5px; display: inline-block; vertical-align: text-top; width: 20px; height: 20px; background: white; border: 2px solid #ccc; vertical-align: middle; box-sizing: border-box; border-radius: 5px; }
+.event-2605.info-modal .styled-checkbox:checked + .checkbox-label:before { background: #E45A10; }
+.event-2605.info-modal .styled-checkbox:checked + .checkbox-label:after { content: ''; position: absolute; left: 5px; top: 10px; background: white; width: 2px; height: 2px; box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white; transform: rotate(45deg); }
+.event-2605.info-modal .submit-button { background-color: #E45A10; color: white; padding: 5px 30px; border: none; border-radius: 999px; margin: 20px auto 0 auto; font-size: 25px; width: 200px; }
+.event-2605.info-modal .submit-button:hover { background-color: #E45A10; }
+.event-2605.registration-complete-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 2500; }
+.event-2605.registration-complete-modal .modal-content { background-color: #FFFAE8; padding: 40px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); text-align: center; width: 80%; max-width: 480px; }
+.event-2605.registration-complete-modal .form-title { font-weight: 400; font-size: 40px; margin-bottom: 20px; color: #E45A10; }
+.event-2605.registration-complete-modal .form-description1 { font-size: 18px; margin-bottom: 10px; font-weight: 400; line-height: 1.3; }
+.event-2605.registration-complete-modal .form-description2 { font-size: 15px; margin-bottom: 20px; font-weight: 400; }
+.event-2605.registration-complete-modal .close-button { font-weight: 600; color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 10px; }
+.event-2605.registration-complete-modal .close-button:hover { background-color: #969696; }
+.event-2605.unlucky-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 2500; }
+.event-2605.unlucky-modal .modal-content { background-color: #FFFAE8; padding: 40px 20px 50px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); text-align: center; width: 90%; max-width: 450px; }
+.event-2605.unlucky-modal .form-title { font-size: 40px; color: #E45A10; margin-bottom:15px;}
+.event-2605.unlucky-modal .unlucky-img { width: 90%; padding-bottom: 30px; margin: 0 auto; }
+.event-2605.unlucky-modal .form-description { font-size: 24px; margin-bottom: 20px; color: #333; }
+.event-2605.unlucky-modal .close-button { color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 10px; cursor: pointer; transition: background-color 0.3s ease; }
+.event-2605.unlucky-modal .close-button:hover { background-color: #969696; }
+.event-2605.already-applied-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 1000; }
+.event-2605.already-applied-modal .modal-content { background-color: #FFFAE8; padding: 45px 40px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); text-align: center; width: 80%; max-width: 400px; }
+.event-2605.already-applied-modal .form-title { font-size: 24px; }
+.event-2605.already-applied-modal .close-button { font-weight: 600; color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+.event-2605.already-applied-modal .close-button:hover { background-color: #969696; }
+.event-2605.event-ended-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; z-index: 1000; }
+.event-2605.event-ended-modal .modal-content { background-color: #FFFAE8; padding: 30px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); text-align: center; width: 80%; max-width: 400px; }
+.event-2605.event-ended-modal .form-title { font-size: 24px; }
+.event-2605.event-ended-modal .close-button { font-weight: 600; color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+.event-2605.event-ended-modal .close-button:hover { background-color: #969696; }
+  
+@media (max-width: 1400px) {
+  .event-2605 .e2605-scene__bg { width: 100%; }
+}
+@media (max-width: 768px) {
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+.event-2605.unlucky-modal .form-title { font-size: 25px; margin-bottom: 10px;}
+.event-2605.unlucky-modal .form-description { font-size: 18px; }
+.event-2605.event-ended-modal .form-title { font-size: 20px; }
+.close-button.Wavve {font-size: 20px !important;}
+.notes-section p {font-size: 12px; line-height: 1.5;}
+.hero-desc { font-size: 12px; margin-bottom: 40px;}
+}
+
+.event-2605.event-modal,
+.event-2605.info-modal,
+.event-2605.registration-complete-modal,
+.event-2605.unlucky-modal,
+.event-2605.already-applied-modal,
+.event-2605.event-ended-modal {
+  width: 100vw;   /* viewport 전체 너비 */
+  height: 100vh;
+  min-height: 100%;
+}
+
+</style>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "22dd0c44b1fb3a0";
+if(window.wcs) {
+  wcs_do();
+}
+</script>
+</head>
+<body>
+<!-- wrap -->
+<div class="wrap event-2605">
+	<!-- <div class="back_layer"></div> -->
+	<!-- header -->
+	<script src="./assets/js/nav-menu.js"></script>
+	<!-- // header -->
+
+	<!-- contariner -->
+	<div class="contariner">
+		<!-- sup_page_swp --> 
+		<section class="swiper sup_page_swp">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+
+
+					<div class="e2605-wrap">
+					
+						<!-- 주변 장식 요소 (leaf / 별 / 점) -->
+						<!-- <span class="e2605-star e2605-star--tl" aria-hidden="true">✳</span> -->
+						<span class="e2605-star e2605-star--bl" aria-hidden="true">✳</span>
+						<!-- <span class="e2605-dot" aria-hidden="true"></span> -->
+						
+						<!-- 코너 장식 leaf -->
+						<img class="e2605-deco e2605-deco--leaf3"  src="assets/images/event/2605/leaf-03.png" alt="" aria-hidden="true">
+						<img class="e2605-deco e2605-deco--leaf4"  src="assets/images/event/2605/leaf-04.png" alt="" aria-hidden="true">
+						<img class="e2605-deco e2605-deco--leaf2"  src="assets/images/event/2605/leaf-02.png" alt="" aria-hidden="true">
+						<img class="e2605-deco e2605-deco--leaf5"  src="assets/images/event/2605/leaf-05.png" alt="" aria-hidden="true">
+						
+						<div class="e2605-grid">
+						
+							<!-- ① 타이틀 (PC: 좌상단 / MO: 상단 전체) -->
+							<div class="e2605-col-title">
+							<p class="e2605-event-label">EVENT</p>
+							<div class="e2605-title-block">
+								<h2 class="e2605-title">평화의<br>꽃을<br>피워주세요</h2>
+							</div>
+							</div>
+						
+							<!-- ② 콘텐츠 (PC: 우측 / MO: 타이틀 아래) -->
+							<div class="e2605-col-content">
+							<div class="e2605-desc">
+								<p class="e2605-desc-main">전쟁기념관 앞, 아직 피어나지 않은 꽃봉오리들이 놓여 있습니다.<br>마음이 가는 꽃을 선택해 보세요.<br>당신의 선택으로 평화의 꽃이 피어납니다.</p>
+								<p class="e2605-desc-sub">&lt;전쟁기념관&gt; 웹진을 방문해 주신 구독자 여러분께<br>감사의 마음을 담아 작은 선물을 준비했습니다.<br>원하는 꽃봉오리를 클릭해 꽃을 피워보세요.<br>아름다운 꽃을 피운 구독자 여러분께 선물을 드립니다.</p>
+							</div>
+						
+							<!-- 경품 (모바일 전용) -->
+							<div class="e2605-prize-mo">
+								<div class="e2605-prize-circle">
+									<p>커피 기프티콘<br>100명</p>
+									<img src="assets/images/event/2605/coffee-01.png" alt="커피 기프티콘">
+								</div>
+								
+							</div>
+						
+							<!-- 이벤트 안내 -->
+							<div class="e2605-info-list">
+								<div class="e2605-info-item">
+								<span class="e2605-info-badge">참여 방법</span>
+								<div class="e2605-info-body e2605-info-body--method">
+									<p>❶ 전쟁기념관 웹진 구독 신청 버튼 클릭</p>
+									<p>❷ 구독 신청 완료</p>
+									<p>❸ 원하는 꽃봉오리 선택</p>
+									<p>❹ 당첨 확인</p>
+								</div>
+								</div>
+								<div class="e2605-info-item">
+								<span class="e2605-info-badge">응모 기간</span>
+								<div class="e2605-info-body">
+									<p class="center">2026년 6월 6일 오전 10시 ~<br class="mob-br"> 2026년 6월 20일 오후 11시 30분</p>
+								</div>
+								</div>
+								<div class="e2605-info-item">
+								<span class="e2605-info-badge">당첨 발표</span>
+								<div class="e2605-info-body">
+									<p>2026년 7월 1일 오전 10시</p>
+								</div>
+								</div>
+							</div>
+						
+							<!-- CTA + 경품(PC) -->
+							<div class="e2605-cta-wrap">
+								<a href="#" class="e2605-btn-subscribe">구독하기</a>
+								<div class="e2605-prize-pc">
+								<div class="e2605-prize-circle">
+									<p>커피 기프티콘<br>100명</p>
+									<img src="assets/images/event/2605/coffee-01.png" alt="커피 기프티콘">
+								</div>
+								
+								</div>
+							</div>
+
+							<!-- 유의사항 pc-->
+							<div class="e2605-notes pc">
+								<ul>
+								<li>전쟁기념관 웹진 구독자가 아닐 경우, 차후에 당첨이 취소될 수 있으니 반드시 구독 후 이벤트에 참여해 주세요.</li>
+								<li>본 이벤트는 동일한 이메일 주소, 이름, 전화번호, IP 기준 1회만 참여 가능합니다.</li>
+								<li>전쟁기념관 웹진 이벤트 2종의 중복 당첨은 제한됩니다.</li>
+								<li>이벤트 경품은 내부 사정에 따라 변경될 수 있습니다.</li>
+								<li>이벤트 응모 시 개인정보 활용에 동의한 것으로 간주됩니다.</li>
+								<li>부정한 방법으로 참여 시 당첨이 취소될 수 있습니다.</li>
+								<li>개인정보는 경품 발송 목적에 한해 사용되며, 발송 완료 후 즉시 폐기됩니다.</li>
+								<li>잘못된 개인정보 입력으로 인한 경품 미발송은 재발송되지 않습니다.</li>
+								</ul>
+							</div>
+							</div>
+						
+							<!-- ③ 기념관 이미지 + 꽃 6개 오버레이 (PC: 좌하단 / MO: 하단) -->
+							<div class="e2605-col-img">
+							<div class="e2605-scene">
+								<!-- 배경 기념관 -->
+								<img class="e2605-scene__bg" src="assets/images/event/2605/bg-01.png" alt="전쟁기념관 일러스트">
+						
+								<!-- 꽃봉오리 6개: 배경 이미지 속 정원 꽃 위치에 정렬 -->
+								<!-- 
+								좌 → 우 순서 / 정원 내 각 꽃 위치 (% 기준)
+								flower-01: 연크림색 꽃봉오리  – 맨 왼쪽
+								flower-02: 분홍 장미형        – 왼쪽 두번째
+								flower-03: 흰색 꽃봉오리      – 중앙 왼쪽
+								flower-04: 진분홍 대형 꽃     – 정중앙 (가장 큰 꽃)
+								flower-05: 분홍 소형 꽃       – 중앙 오른쪽
+								flower-06: 연노랑 꽃봉오리    – 오른쪽
+								-->
+								<button class="e2605-flower e2605-flower--01" type="button" aria-label="꽃봉오리 1 선택">
+								<img src="assets/images/event/2605/flower-01-01.png" alt="꽃봉오리 1">
+								</button>
+								<button class="e2605-flower e2605-flower--02" type="button" aria-label="꽃봉오리 2 선택">
+								<img src="assets/images/event/2605/flower-02-01.png" alt="꽃봉오리 2">
+								</button>
+								<button class="e2605-flower e2605-flower--03" type="button" aria-label="꽃봉오리 3 선택">
+								<img src="assets/images/event/2605/flower-03-01.png" alt="꽃봉오리 3">
+								</button>
+								<button class="e2605-flower e2605-flower--04" type="button" aria-label="꽃봉오리 4 선택">
+								<img src="assets/images/event/2605/flower-04-01.png" alt="꽃봉오리 4">
+								</button>
+								<button class="e2605-flower e2605-flower--05" type="button" aria-label="꽃봉오리 5 선택">
+								<img src="assets/images/event/2605/flower-05-01.png" alt="꽃봉오리 5">
+								</button>
+								<button class="e2605-flower e2605-flower--06" type="button" aria-label="꽃봉오리 6 선택">
+								<img src="assets/images/event/2605/flower-06-01.png" alt="꽃봉오리 6">
+								</button>
+							</div>
+							</div>
+              <!-- 유의사항 pc-->
+							<div class="e2605-notes mob">
+								<ul>
+								<li>전쟁기념관 웹진 구독자가 아닐 경우, 차후에 당첨이 취소될 수 있으니 반드시 구독 후 이벤트에 참여해 주세요.</li>
+								<li>본 이벤트는 동일한 이메일 주소, 이름, 전화번호, IP 기준 1회만 참여 가능합니다.</li>
+								<li>전쟁기념관 웹진 이벤트 2종의 중복 당첨은 제한됩니다.</li>
+								<li>이벤트 경품은 내부 사정에 따라 변경될 수 있습니다.</li>
+								<li>이벤트 응모 시 개인정보 활용에 동의한 것으로 간주됩니다.</li>
+								<li>부정한 방법으로 참여 시 당첨이 취소될 수 있습니다.</li>
+								<li>개인정보는 경품 발송 목적에 한해 사용되며, 발송 완료 후 즉시 폐기됩니다.</li>
+								<li>잘못된 개인정보 입력으로 인한 경품 미발송은 재발송되지 않습니다.</li>
+								</ul>
+							</div>
+						
+						</div><!-- /e2605-grid -->
+						
+					
+					
+					</div><!-- /e2605-wrap -->
+					
+
+				</div>
+			</div>
+
+		</section>
+		<!-- // sup_page_swp --> 
+	</div>
+	<!-- // contariner -->
+	<!-- page-navi -->
+	<div id="pageNav" class="event2605nav">
+		<div class="page_navi">
+			<div class="page_container">
+				<a class="btn-prev" href="index.html" title="이전보기"><i class="white"></i><span>이전 글</span></a>
+				<a class="btn-next" href="sub02.html" title="다음보기"><span>다음 글</span><i class="white"></i></a>
+			</div>
+		</div>
+	</div>
+	<!--// page-navi -->
+	<!-- footer -->
+	<!-- <script src="./assets/js/footer.js"></script> -->
+	<!-- // footer -->
+</div>
+
+
+<div id="eventModal" class="event-2605 event-modal">
+    <div class="modal-content">
+        <button type="button" class="close-button" aria-label="닫기">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path 
+                d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z" 
+                fill="#000000" 
+                stroke="#000000" 
+                stroke-width="1"
+                />
+            </svg>
+        </button>
+        <div class="event-result">
+            <h2 class="result-message Wavve">축하합니다!</h2>
+            <img class="lucky-img" src="assets/images/event/2605/lucky-img.png" alt="/Lucky!">
+            <p class="sub-message Wavve">평화의 꽃이 활짝 피었습니다🌸</p>
+            <div class="gift-card">
+                <img class="gift-img" src="assets/images/event/2605/coffee-01.png" alt="스타벅스 5천원 상품권" />
+                <div>커피 키프티콘(100명)</div>
+            </div>
+            <p class="instruction ">폼을 작성하여 제출해주세요.<br/>제출한 번호로 개별 연락드릴 예정입니다.</p>
+            <p class="notice">*경품 발송 시, &lt;전쟁기념관>의<br/> 구독자가 아닐 경우 당첨이 취소됩니다.</p>
+            <button type="button" class="submit-button Wavve">클릭!</button>
+        </div>
+    </div>
+</div>
+<div id="infoModal" class="event-2605 info-modal">
+    <div class="modal-content">
+        <button type="button" class="close-button" aria-label="닫기">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path 
+                d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z" 
+                fill="#000000" 
+                stroke="#000000" 
+                stroke-width="1"
+                />
+            </svg>
+        </button>
+        <div class="info-form">
+            <h2 class="form-title Wavve">당첨자 정보</h2>
+            <p class="form-description">폼을 작성하여 제출해주세요.<br/>제출한 번호로 개별 연락드릴 예정입니다. <br/>
+            *경품 발송 시,  &lt;전쟁기념관>의 구독자가 <br/> 아닐 경우 당첨이 취소됩니다.</p>
+            <div class="form-group">
+                <label class="name" for="name">성명</label>
+                <input class="name-input" type="text" id="name" name="name">
+            </div>
+            <div class="form-group phone-group">
+                <label class="phone" for="phone">휴대폰 번호</label>
+                <div class="phone-inputs">
+                    <select class="phone-select" id="phone-prefix" name="phone-prefix">
+                        <option class="phone-option" value="010">010</option>
+                        <option class="phone-option" value="011">011</option>
+                        <option class="phone-option" value="016">016</option>
+                        <option class="phone-option" value="017">017</option>
+                        <option class="phone-option" value="018">018</option>
+                        <option class="phone-option" value="019">019</option>
+                    </select>
+                    <span class="hyphen">-</span>
+                    <input class="phone-input" type="tel" id="phone-mid" name="phone-mid" maxlength="4" >
+                    <span class="hyphen">-</span>
+                    <input class="phone-input" type="tel" id="phone-last" name="phone-last" maxlength="4" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="email" for="email">E-mail</label>
+                <input class="email-input" type="email" id="email" name="email">
+            </div>
+            <h3 class="agreement-title">개인정보정책 및 이용약관 동의</h3>
+            <div class="agreement-group">
+                <div class="agreement-content">
+                    <h4 class="agreement-subtitle">개인정보 수집 및 이용 동의</h4>
+                    <p class="agreement-text">수집하는 개인정보 항목: 이름, 연락처, 이메일
+                    <br/> 수집 및 이용 목적: 이벤트 참여자 확인 및 당첨 안내
+                    <br/> 보유 및 이용 기간: 당첨자 발표 후 1개월</p>
+
+                    <h4 class="agreement-subtitle">개인정보 제3자 제공 동의</h4>
+                    <p class="agreement-text">동의를 거부할 수 있으나, 이 경우 이벤트 참여가 불가능합니다.
+                    <br/> 제공받는 자의 이용 목적: 이름, 연락처, 이메일
+                    <br/> 제공하는 항목: 이름, 연락처, 이메일
+                    <br/> 제공받는 자의 보유 및 이용 기간:
+                    <br/> 보유 및 이용기간: 당첨자 발표 후 1개월</p>
+                </div>
+            </div>
+            <div class="checkbox-row">
+                <input class="styled-checkbox" id="checkbox-label" type="checkbox" value="html" />
+                <label class="checkbox-label" for="checkbox-label">동의합니다</label>
+            </div>
+            <button type="submit" class="submit-button Wavve">등록!</button>
+        </div>
+    </div>
+</div>
+<div id="registrationCompleteModal" class="event-2605 registration-complete-modal">
+    <div class="modal-content">
+        <h2 class="form-title Wavve">등록 완료</h2>
+        <p class="form-description1 Wavve">정상적으로 제출되었습니다.<br/> 제출한 번호로 개별 연락드릴 예정입니다.<br/>감사합니다.</p>
+        <p class="form-description2"> *경품 발송 시, &lt;전쟁기념관&gt;의 구독자가 <br/>아닐 경우 당첨이 취소됩니다.</p>
+        <button type="button" class="close-button Wavve" onclick="hideModal('registrationCompleteModal')">닫기</button>
+    </div>
+</div>
+<div id="unluckyModal" class="event-2605 unlucky-modal">
+    <div class="modal-content">
+        <img class="unlucky-img" src="assets/images//event/2605/boom.png" alt="Unlucky!">
+        <h2 class="form-title Wavve">당첨되지 않았습니다!</h2>
+        <p class="form-description Wavve">다음에 다시 참여해주세요.</p>
+        <button type="button" class="close-button Wavve" onclick="hideModal('unluckyModal')" style="color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 10px;">확인</button>
+    </div>
+</div>
+<div id="alreadyAppliedModal" class="event-2605 already-applied-modal custom-modal">
+    <div class="modal-content">
+        <h2 class="form-title Wavve">이미 응모하셨습니다.</h2>
+        <button type="button" class="close-button Wavve" onclick="hideModal('alreadyAppliedModal')" style="color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 30px;">확인</button>
+    </div>
+</div>
+<div id="eventEndedModal" class="event-2605 event-ended-modal custom-modal">
+    <div class="modal-content">
+        <h2 class="form-title Wavve" >당첨 정원이 충족돼<br/>이벤트가 종료됐습니다.</h2>
+        <button type="button" class="close-button Wavve" onclick="hideModal('eventEndedModal')" style="color: #FFFFFF; background-color: #B2B2B2; padding: 5px 30px; border: none; border-radius: 999px; font-size: 25px; width: 200px; margin-top: 30px;">닫기</button>
+    </div>
+</div>
+
+
+<!-- // wrap -->
+<script>
+(function () {
+  const flowerNums = ['01','02','03','04','05','06'];
+  let clickedFlowerNum = null;
+
+  function imgSrc(num, stage) {
+    return 'images/event/2605/flower-' + num + '-0' + stage + '.png';
+  }
+
+  // 모달 열기/닫기
+  function openModal(id) {
+    var m = document.getElementById(id);
+    if (m) m.style.display = 'flex';
+  }
+  function closeModal(id) {
+    var m = document.getElementById(id);
+    if (m) m.style.display = 'none';
+  }
+
+  // 모든 꽃 피우기
+  function bloomAllFlowers() {
+    flowerNums.forEach(function(n) {
+      var b = document.querySelector('.e2605-flower--' + n);
+      if (!b) return;
+      b.querySelector('img').src = imgSrc(n, 3);
+      b.classList.add('is-bloomed');
+    });
+  }
+
+  // ── 꽃 버튼 이벤트 ──
+  flowerNums.forEach(function(num) {
+    var btn = document.querySelector('.e2605-flower--' + num);
+    if (!btn) return;
+    var img = btn.querySelector('img');
+
+    btn.addEventListener('mouseenter', function() {
+      if (!btn.classList.contains('is-bloomed')) img.src = imgSrc(num, 3);
+    });
+    btn.addEventListener('mouseleave', function() {
+      if (!btn.classList.contains('is-bloomed')) img.src = imgSrc(num, 1);
+    });
+    btn.addEventListener('click', function() {
+      clickedFlowerNum = num;
+      img.src = imgSrc(num, 3);
+      btn.classList.add('is-bloomed');
+
+      // ↓ 여기 ID만 바꾸면 원하는 모달 열림
+      var modal = document.getElementById('eventModal');           // 미당첨 모달
+      // var modal = document.getElementById('unluckyModal');           // 미당첨 모달
+      // var modal = document.getElementById('eventModal');          // 당첨 모달
+      // var modal = document.getElementById('alreadyAppliedModal'); // 이미 응모
+      // var modal = document.getElementById('eventEndedModal');     // 이벤트 종료
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    });
+  });
+
+  // ── eventModal: 클릭! → infoModal ──
+  document.querySelector('#eventModal .submit-button').addEventListener('click', function() {
+    closeModal('eventModal');
+    openModal('infoModal');
+  });
+
+  // ── infoModal: 등록! → 모든 꽃 피우기 + registrationCompleteModal ──
+  document.querySelector('#infoModal .submit-button').addEventListener('click', function() {
+    closeModal('infoModal');
+    bloomAllFlowers();
+    openModal('registrationCompleteModal');
+  });
+
+  // ── 확인/닫기 버튼 있는 모달들: 닫히면서 꽃 모두 피우기 ──
+  var closeAndBloomIds = ['unluckyModal', 'alreadyAppliedModal', 'eventEndedModal', 'registrationCompleteModal'];
+
+  // ── 모달 바깥 클릭 + X버튼 → 닫기 (모달 종류에 따라 꽃 처리 다름) ──
+  var allModalIds = ['eventModal', 'infoModal', 'registrationCompleteModal', 'unluckyModal', 'alreadyAppliedModal', 'eventEndedModal'];
+
+  allModalIds.forEach(function(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+
+    // 바깥 클릭 시 닫기
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal(id);
+        // unlucky/alreadyApplied/eventEnded/registrationComplete는 닫을 때 꽃 피우기
+        if (closeAndBloomIds.indexOf(id) !== -1) bloomAllFlowers();
+      }
+    });
+
+    // X버튼 클릭 시 닫기
+    var closeBtn = modal.querySelector('button[aria-label="닫기"]');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        closeModal(id);
+        if (closeAndBloomIds.indexOf(id) !== -1) bloomAllFlowers();
+      });
+    }
+  });
+
+  // onclick="hideModal(...)" 호환용 전역 함수
+  window.hideModal = function(id) {
+    closeModal(id);
+    if (closeAndBloomIds.indexOf(id) !== -1) bloomAllFlowers();
+  };
+
+})();
+</script>
+</body>
+</html>
