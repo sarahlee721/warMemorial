@@ -95,7 +95,7 @@
 .event-2605 .e2605-prize-mo { display: none; }
  
 /* ----- 이벤트 안내 ----- */
-.event-2605 .e2605-info-list { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 28px; }
+.event-2605 .e2605-info-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; margin-top: 50px; }
 .event-2605 .e2605-info-item { display: flex; align-items: flex-start; gap: 18px; }
 .event-2605 .e2605-info-badge { background: #fff; display: inline-flex; align-items: center; font-weight: 600; justify-content: center; border: 1.5px solid #444; border-radius: 50px; padding: 4px 16px 1px; font-size: 14px; font-weight: 600; white-space: nowrap; color: #333; min-width: 84px; flex-shrink: 0; line-height: 1.6; }
 .event-2605 .e2605-info-body { padding-top: 3px; }
@@ -106,7 +106,7 @@
  
 /* ----- CTA 영역 ----- */
 .event-2605 .e2605-cta-wrap { display: flex; align-items: center; gap: 150px; }
-.event-2605 .e2605-btn-subscribe { display: inline-flex; align-items: center; justify-content: center; background-image: url('images/event/2605/flower-button.png'); background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; color: #fff; font-size: 18px; font-weight: 700; width: 170px; height: 80px; border-radius: 0; text-decoration: none; letter-spacing: 1px; transition: transform 0.2s ease, filter 0.2s ease; padding: 0; }
+.event-2605 .e2605-btn-subscribe { display: inline-flex; align-items: center; justify-content: center; background-image: url('assets/images/event/2605/flower-button.png'); background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; color: #fff; font-size: 18px; font-weight: 700; width: 170px; height: 80px; border-radius: 0; text-decoration: none; letter-spacing: 1px; transition: transform 0.2s ease, filter 0.2s ease; padding: 0; }
 .event-2605 .e2605-btn-subscribe:hover { background: url('assets/images/event/2605/flower-button.png') no-repeat; background-size: 100% 100%; transform: scale(1.05); filter: brightness(0.95); }
 .event-2605 .e2605-btn-subscribe:active { transform: scale(0.97); filter: brightness(0.88); }
  
@@ -143,6 +143,7 @@
    반응형 - 모바일 (~ 767px)
    ============================================================ */
 @media (max-width: 1020px) {
+  .event-2605 .e2605-info-list { display: flex; flex-direction: column; align-items: center; }
   .event-2605 .mob-br { display: block; }
   .event-2605 .e2605-notes.mob { order: 4; }
   .event-2605 .e2605-notes.pc { display: none; }
