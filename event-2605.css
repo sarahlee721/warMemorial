@@ -40,7 +40,7 @@
 
 /* ----- 타이틀 꽃 블록 ----- */
 /* ※ 외부 CSS 사용 시 경로: ../../images/event/2605/leaf-01.png */
-.event-2605 .e2605-title-block { background: url('images/event/2605/leaf-01.png') center / contain no-repeat; width: 268px; height: 238px; display: flex; align-items: center; justify-content: flex-start; padding-left: 32px; }
+.event-2605 .e2605-title-block { background: url('assets/images/event/2605/leaf-01.png') center / contain no-repeat; width: 268px; height: 238px; display: flex; align-items: center; justify-content: flex-start; padding-left: 32px; }
 .event-2605 .e2605-title { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.35; text-align: left; margin: 0; padding: 0; word-break: keep-all; }
 
 /* ----- 설명 텍스트 ----- */
